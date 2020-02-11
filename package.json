@@ -19,6 +19,7 @@
     "koa-body": "^4.1.0",
     "koa-router": "^7.4.0",
     "koa-session": "^5.10.1",
+    "less": "^3.11.0",
     "lodash": "^4.17.11",
     "lru-cache": "^5.1.1",
     "markdown-it": "^8.4.2",
@@ -36,6 +37,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "del": "rm -rf .next"
+    "del": "rm -rf .next",
+    "data": "node ./data/server.js"
   }
 }

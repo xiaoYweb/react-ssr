@@ -4,13 +4,14 @@ const path = require('path');
 const isServer = typeof window === 'undefined';
 const resolve = dir => path.resolve(__dirname, dir);
 
-module.exports = withLess({
+module.exports = withLess(withCSS({
   webpack(config, options) {
     config.resolve.alias = {
       ...config.resolve.alias,
-      _c: resolve('components')
+      _c: resolve('components'),
+      _p: resolve('public')
     }
     return config;
   },
   pageExtensions: ['jsx']
-})
+}))

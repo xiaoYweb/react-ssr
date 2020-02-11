@@ -2,6 +2,8 @@ import App from 'next/app';
 import { Provider } from 'react-redux';
 import withRedux from '../../lib/withRedux';
 import Header from '../../components/header';
+// import '../../public/less/init.less';
+import '_p/less/init.less';
 
 function MyApp({ Component, pageProps, reduxStore }) {
   console.log("TCL: MyApp -> pageProps", pageProps)
