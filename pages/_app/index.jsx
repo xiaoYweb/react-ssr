@@ -1,5 +1,7 @@
 import App from 'next/app';
 import { Provider } from 'react-redux';
+import { useState, useEffect, useCallback } from 'react';
+import Router from 'next/router';
 import withRedux from '../../lib/withRedux';
 import Header from '../../components/header';
 // import '../../public/less/init.less';
@@ -7,9 +9,27 @@ import '_p/less/init.less';
 
 function MyApp({ Component, pageProps, reduxStore }) {
   console.log("TCL: MyApp -> pageProps", pageProps)// 没有找到页面 pageProps.statusCode === 404
+  const [loading, updateLoading] = useState(false);
+  const startLoading = useCallback(() => {
+    updateLoading(true)
+  })
+  const stopLoading = useCallback(() => {
+    updateLoading(false)
+  })
+  useEffect(() => {
+    Router.events.on('routeChangeStart', startLoading)
+    Router.events.on('routeChangeComplete', stopLoading)
+    Router.events.on('routeChangeError', stopLoading)
+    return () => {
+      Router.events.off('routeChangeStart', startLoading)
+      Router.events.off('routeChangeComplete', stopLoading)
+      Router.events.off('routeChangeError', stopLoading)
+    }
+  }, [])
   return (
     <Provider store={reduxStore}>
       {pageProps.statusCode === 404 ? null : <Header />}
+      {loading ? 1 : 0}
       <Component {...pageProps} />
     </Provider>
   )

@@ -1,5 +1,6 @@
 class Error extends React.Component {
-  static getInitialProps({ res, err }) {
+  static getInitialProps(ctx) {
+    const { res, err } = ctx;
     const statusCode = res ? res.statusCode : err ? err.statusCode : null;
     return { statusCode }
   }
