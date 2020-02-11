@@ -10,6 +10,7 @@ function get(url, data = {}) {
         resolve(data.data)
       }
     }).catch(err => {
+    console.log("TCL: get -> err")
       reject(err)
     })
   })

@@ -9,7 +9,8 @@ module.exports = withLess(withCSS({
     config.resolve.alias = {
       ...config.resolve.alias,
       _c: resolve('components'),
-      _p: resolve('public')
+      _p: resolve('public'),
+      _api: resolve('api'),
     }
     return config;
   },

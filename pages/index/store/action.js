@@ -1,5 +1,5 @@
 import { get_list } from './type';
-import api from '../../../api';
+import api from '_api';
 const { getList } = api.home;
 
 export default {
@@ -7,7 +7,7 @@ export default {
     return (dispatch, getState) => {
       return getList({id: 110}).then((res) => {
         dispatch(retParams(get_list, res))
-      })
+      }).catch(() => dispatch(retParams(get_list, [])))
     }
   }
 }

@@ -5,7 +5,7 @@ function handleProxy() {
     const url = ctx.url;
     const method = ctx.method.toLowerCase();
     const re = /^\/api/;
-    if (!re.test(url)) return await next()
+    if (!re.test(url)) return await next()// 若不是接口请求一律跳转执行下一个中间件
     let res = null;
     const headers = {}
     try {

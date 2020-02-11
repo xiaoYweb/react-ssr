@@ -6,10 +6,10 @@ import Header from '../../components/header';
 import '_p/less/init.less';
 
 function MyApp({ Component, pageProps, reduxStore }) {
-  console.log("TCL: MyApp -> pageProps", pageProps)
+  console.log("TCL: MyApp -> pageProps", pageProps)// 没有找到页面 pageProps.statusCode === 404
   return (
     <Provider store={reduxStore}>
-      <Header />
+      {pageProps.statusCode === 404 ? null : <Header />}
       <Component {...pageProps} />
     </Provider>
   )
@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps, reduxStore }) {
  */
 
 MyApp.getInitialProps = async (appContext) => {// 
-  const appProps = await App.getInitialProps(appContext);// pages component.getInitialProps 返回的 值
+  const appProps = await App.getInitialProps(appContext);//{ pageProps: {pages component.getInitialProps 返回的 值 } }
   console.log("TCL: MyApp.getInitialProps -> appProps", appProps)
   return { ...appProps }//next 传入 app组件中 props.appProps
 }
