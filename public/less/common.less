@@ -1,0 +1,156 @@
+html, body {
+  font-size: 14px;
+  color: #333;
+}
+* {font-family: Arial,Open Sans,Helvetica,sans-serif, "思源黑体" "宋体";} 
+#__next {min-width: 100px; min-height: 100%;}
+a {color: #7495FF; &:hover {color: #2E5EE0;}}
+.action-color {color: #898F9E;}
+.icon-hover:hover {color: #2E5EE0;}
+.icon-active {color: #7495FF;}
+.my-icon {color: #898F9E;}
+.my-icon:hover {color: #7495FF;}
+//渲染位置 样式设置
+.render-area {word-break:break-all;}
+.render-area a{ color: #666; &:hover {color: #2E5EE0;}}
+.render-area img {width: 100%!important; height: auto!important; padding: 20px 180px;}
+.warp {word-break:break-all;}
+
+.flex {display: flex;}
+
+.shrink-0 {flex-shrink: 0;}
+
+.fxc {justify-content: center;}
+
+.fyc {align-items: center;}
+
+.fcb {justify-content: space-between;}
+
+.fxsb {justify-content: space-between;}
+
+.fxsa {justify-content: space-around;}
+
+.fdc {flex-direction: column;}
+
+.fwp {flex-wrap: wrap;}
+
+.fg-1 {flex-grow: 1;}
+.fas-fs {align-self: flex-start;}
+.fas-fe {align-self: flex-end;}
+
+.prel {position: relative;}
+
+.pabs {position: absolute;}
+
+.pfix {position: fixed;}
+
+.mb-5 {margin-bottom: 5px;}
+.mb-10 {margin-bottom: 10px;}
+.mb-15 {margin-bottom: 15px;}
+.mb-20 {margin-bottom: 20px;}
+.mb-30 {margin-bottom: 30px;}
+.mb-40 {margin-bottom: 40px;}
+.ml-5 {margin-left: 5px;}
+.mt-5 {margin-top: 5px;}
+.mr-5 {margin-right: 5px;}
+.mr-10 {margin-right: 10px;}
+.mr-15 {margin-right: 15px;}
+.mr-20 {margin-right: 20px;}
+.mr-30 {margin-right: 30px;}
+.mr-40 {margin-right: 40px;}
+
+.br-4 {border-radius: 4px;}
+.br-half {border-radius: 50%;}
+
+.dot {padding: 0 5px;}
+
+.cp {cursor: pointer; user-select: none;}
+
+
+.fs-24 {font-size: 24px; line-height: 34px;}
+.fs-20 {font-size: 20px; line-height: 28px;}
+.fs-16 {font-size: 16px; line-height: 22px;}
+.fs-14 {font-size: 14px; line-height: 20px;}
+.fs-12 {font-size: 12px; line-height: 17px;}
+.fw-550 {font-weight: 550;}
+.c666 {color: #666;}
+.c333 {color: #333;}
+.c888 {color: #888;}
+.cb9 {color: #B9B9B9;}
+.c89 {color: #898F9E;}
+.ce1 {color: #e1e1e1;}
+.c1 {color: #2E5EE0;}
+.c2 {color: #7495FF;}
+.c0 {color: #F1403C;}
+.bg1 {background: #2E5EE0;}
+.bg2 {background: #7495FF;}
+.bg3{background: #F0F8FF}
+.bg0 {background: #F1403C;}
+
+
+.bb {border-bottom: 1px solid #e1e1e1;}
+.bd-e1 {border: 1px solid #e1e1e1;}
+
+.etc { text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+
+.list-mt-20 {
+  &>li + li {margin-top: 20px;}
+}
+.list-mt-30 {
+  &>li + li {margin-top: 30px;}
+}
+.list-pt-20 {
+  &>li + li {padding-top: 20px;}
+}
+.list-pt-30 {
+  &>li + li {padding-top: 30px;}
+}
+.list-bt {
+  &>li + li {border-top: 1px solid #e1e1e1;}
+}
+
+.etc-3 {
+  overflow: hidden;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+.etc-5 {
+  overflow: hidden;
+  -webkit-line-clamp: 5; 
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+
+.button {
+  width: 100px;
+  height: 40px;
+  background-color: #7495FF;
+  color: #fff;
+  border-radius: 4px;
+}
+.button:hover {
+  background-color: #2E5EE0;
+}
+
+.topic-list {
+  width: 100%; min-height: 72px; background: rgba(231, 240, 255, 0.47); border-radius: 4px; padding: 10px 10px 0;
+  &>li {
+    width: auto; height: 30px; margin-right: 12px; margin-bottom: 10px;
+  }
+}
+//  icon  default hover color 效果
+.icon-color {
+  color: #7495FF; z-index: 1; &:hover {color: #2E5EE0;}
+}
+
+//覆盖样式 区域
+.w-e-text-container {
+  z-index: 10!important;
+}
+.notification-popover-wrap,.avator-popover-wrap {//avator悬浮框
+	z-index: 11;
+}
+.header-affix>.ant-affix{
+  z-index: 11;
+}

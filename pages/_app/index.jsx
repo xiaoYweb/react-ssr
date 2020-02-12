@@ -4,8 +4,9 @@ import { useState, useEffect, useCallback } from 'react';
 import Router from 'next/router';
 import withRedux from '../../lib/withRedux';
 import Header from '../../components/header';
+import PageLoading from './loading';
 import 'antd/dist/antd.css';
-// import '../../public/less/init.less';
+import '../../public/less/common.less';
 import '_p/less/init.less';
 
 function MyApp({ Component, pageProps, reduxStore }) {
@@ -15,7 +16,7 @@ function MyApp({ Component, pageProps, reduxStore }) {
     updateLoading(true)
   })
   const stopLoading = useCallback(() => {
-    updateLoading(false)
+    sleep().then(() => updateLoading(false))
   })
   useEffect(() => {
     Router.events.on('routeChangeStart', startLoading)
@@ -30,7 +31,7 @@ function MyApp({ Component, pageProps, reduxStore }) {
   return (
     <Provider store={reduxStore}>
       {pageProps.statusCode === 404 ? null : <Header />}
-      {loading ? 1 : 0}
+      { loading ? <PageLoading /> : null }
       <Component {...pageProps} />
     </Provider>
   )
@@ -55,3 +56,10 @@ MyApp.getInitialProps = async (appContext) => {//
 
 export default withRedux(MyApp);
 
+function sleep(delay=200) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('')
+    }, delay)
+  })
+}
