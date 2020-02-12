@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import action from './store/action';
 import api from '_api';
 const { getList } = api.home;
+import { Button } from 'antd';
 
 class Home extends React.Component {
   // constructor(props) {
@@ -16,7 +17,7 @@ class Home extends React.Component {
     return (
       <>
         <h1>Home {this.props.name} </h1>
-        <button onClick={this.getList}>get list</button>
+        <Button onClick={this.getList}>get list</Button>
         <ul>
           {
             this.props.list.map(item => {

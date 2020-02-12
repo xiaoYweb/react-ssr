@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import Router from 'next/router';
 import withRedux from '../../lib/withRedux';
 import Header from '../../components/header';
+import 'antd/dist/antd.css';
 // import '../../public/less/init.less';
 import '_p/less/init.less';
 
