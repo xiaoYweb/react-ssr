@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
-import action from './store/action';
+import { action } from '_store';
 import api from '_api';
 const { getList } = api.home;
 import { Button } from 'antd';
+
+const { home: action_home} = action;
 
 class Home extends React.Component {
   // constructor(props) {
@@ -36,7 +38,7 @@ class Home extends React.Component {
     )
   }
   static async getInitialProps({ reduxStore }) {// redux 获取数据 经过props 传入
-    await reduxStore.dispatch(action.getList())
+    await reduxStore.dispatch(action_home.getList())
     return { name: 'lili' }
   }
   // static async getInitialProps() {// page 获取数据 经过props 传入
@@ -50,4 +52,4 @@ class Home extends React.Component {
 
 
 
-export default connect(state => state.home, action)(Home);
+export default connect(state => state.home, action_home)(Home);

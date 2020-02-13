@@ -1,11 +1,28 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
+
 import home from '../pages/index/store';
 import user from './user';
 
-const reducers = combineReducers({
+const queue = {
   home, user
+}
+console.log("TCL: queue", queue)
+
+
+const modules = { type: {}, reducer: {}, action: {} };
+
+Object.entries(queue).forEach(([moduleKey, moduleItem]) => {
+  Object.keys(modules).forEach(key => {
+    modules[key][moduleKey] = moduleItem[key]
+  })
+})
+
+console.log("TCL: modules", modules)
+
+const reducers = combineReducers({
+  ...modules.reducer
 })
 
 export default function initializeStore(initialState) {
@@ -16,3 +33,7 @@ export default function initializeStore(initialState) {
   )
   return store;
 }
+
+export const type = modules.type;
+
+export const action = modules.action;

@@ -1,4 +1,6 @@
-import { get_use_info, set_ln } from './type';
+import type from './type';
+
+const { get_use_info, set_ln } = type;
 
 const defaultState = {
   info: null,

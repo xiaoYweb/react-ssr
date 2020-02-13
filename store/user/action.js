@@ -1,6 +1,9 @@
 import api from '_api';
-import { set_ln } from './type';
+import type from './type';
+
 const { setLanguage } = api.home;
+const { set_ln } = type;
+
 
 export default {
   setLn(ln) {

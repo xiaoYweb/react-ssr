@@ -4,7 +4,6 @@ function handleProxy() {
   return async(ctx, next) => {
     const url = ctx.url;
     const method = ctx.method.toLowerCase();
-    
     if (/^\/self/.test(url)) {
       ctx.session.ln = ctx.request.body.ln
       console.log("TCL: handleProxy -> ctx.request.body", ctx.request.body)
@@ -12,8 +11,11 @@ function handleProxy() {
       ctx.body = 'set ln success';
       return 
     }
-    const re = /^\/api/;
-    if (!re.test(url)) return await next()// 若不是接口请求一律跳转执行下一个中间件
+    const allowApiArr = ['api'];
+    // const re = /^\/api/;
+    const isAllowApi = allowApiArr.some(api => new RegExp('^\/' + api).test(url))
+    
+    if (!isAllowApi) return await next()// 若不是接口请求一律跳转执行下一个中间件
     let res = null;
     const headers = {}
     try {

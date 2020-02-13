@@ -12,6 +12,7 @@ module.exports = withLess(withCSS({
       _p: resolve('public'),
       _api: resolve('api'),
       _lib: resolve('lib'),
+      _store: resolve('store')
     }
     return config;
   },

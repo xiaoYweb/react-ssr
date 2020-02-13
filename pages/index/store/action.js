@@ -1,5 +1,7 @@
-import { get_list } from './type';
+import type from './type';
 import api from '_api';
+
+const { get_list } = type;
 const { getList } = api.home;
 
 export default {

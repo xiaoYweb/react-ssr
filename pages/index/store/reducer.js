@@ -1,4 +1,6 @@
-import { get_list } from './type';
+import type from './type';
+
+const { get_list } = type;
 
 const defaultState = {
   name: 'leo',
