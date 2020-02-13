@@ -4,6 +4,14 @@ function handleProxy() {
   return async(ctx, next) => {
     const url = ctx.url;
     const method = ctx.method.toLowerCase();
+    
+    if (/^\/self/.test(url)) {
+      ctx.session.ln = ctx.request.body.ln
+      console.log("TCL: handleProxy -> ctx.request.body", ctx.request.body)
+      ctx.status = 200;
+      ctx.body = 'set ln success';
+      return 
+    }
     const re = /^\/api/;
     if (!re.test(url)) return await next()// 若不是接口请求一律跳转执行下一个中间件
     let res = null;

@@ -13,7 +13,7 @@ class Login extends React.Component {
     );
   }
   static async getInitialProps(ctx) {
-    console.log("TCL: Login.getInitialProps ctx", ctx)
+    // console.log("TCL: Login.getInitialProps ctx", ctx)
     return {} 
   }
 }
