@@ -9,7 +9,7 @@ function handleProxy() {
       console.log("TCL: handleProxy -> ctx.request.body", ctx.request.body)
       ctx.status = 200;
       ctx.body = 'set ln success';
-      return 
+      return
     }
     const allowApiArr = ['api'];
     // const re = /^\/api/;

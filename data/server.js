@@ -29,12 +29,9 @@ server.use(async (ctx, next) => {
 })
 router.get('/api/getHomeList', async ctx => {
   console.log('--->> getHomeList')
+  const data = await getDate()
   ctx.body = {
-    data: [
-      {id: 1 , title: 'Node.js  实现抢票小工具 & 短信通知提醒'},
-      {id: 2 , title: '7 个沙雕又带有陷阱的 JS 面试题'},
-      {id: 3 , title: '重构：从kfc点单发现状态模式'}
-    ],
+    data,
     code: 200,
     msg: 'success'
   }
@@ -46,3 +43,15 @@ server.listen(port, () => {
   console.log(`koa server is listening ${port}`)
 });
 
+function getDate() {
+  const data = [
+    {id: 1 , title: 'Node.js  实现抢票小工具 & 短信通知提醒'},
+    {id: 2 , title: '7 个沙雕又带有陷阱的 JS 面试题'},
+    {id: 3 , title: '重构：从kfc点单发现状态模式'}
+  ];
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(data)
+    }, 300)
+  })
+}

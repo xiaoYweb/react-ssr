@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import { action } from '_store';
 import api from '_api';
 const { getList } = api.home;
-import { Button } from 'antd';
-
-const { home: action_home} = action;
+import { Button, Input } from 'antd';
+import { action as actions } from '../../store';
+console.log("actions", actions)
+const { home: action_home } = action;
 
 class Home extends React.Component {
   // constructor(props) {
@@ -13,7 +14,12 @@ class Home extends React.Component {
   //     ...props.data
   //   }
   // }
+  state = {
+    ln: ''
+  }
   render() {
+    console.log('props', this.props)
+    const { ln } = this.state;
     // const { list } = this.state;
     // console.log("TCL: Home -> render -> list", list)
     return (
@@ -34,6 +40,8 @@ class Home extends React.Component {
             })
           }
         </ul> */}
+        <Input type="text" value={ln} onChange={this.handleInput} />
+        <Button onClick={this.setLanguage}>set language</Button>
       </>
     )
   }
@@ -48,8 +56,16 @@ class Home extends React.Component {
   getList = () => {
     this.props.getList()
   }
+  handleInput = (ev) => {
+    const ln = ev.target.value;
+    this.setState({ ln })
+  }
+  setLanguage = () => {
+    const { ln } = this.state;
+    ln && this.props.setLn(ln)
+  }
 }
 
 
 
-export default connect(state => state.home, action_home)(Home);
+export default connect(state => state.home, { ...actions.home, ...action.user })(Home);

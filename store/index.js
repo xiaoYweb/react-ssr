@@ -4,11 +4,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import home from '../pages/index/store';
 import user from './user';
+import { fn } from 'moment';
 
 const queue = {
   home, user
 }
-console.log("TCL: queue", queue)
+// console.log("TCL: queue", queue)
 
 
 const modules = { type: {}, reducer: {}, action: {} };
@@ -19,7 +20,21 @@ Object.entries(queue).forEach(([moduleKey, moduleItem]) => {
   })
 })
 
-console.log("TCL: modules", modules)
+// console.log("TCL: modules", modules)
+// const modules = {
+//   type: {
+//     home: {},
+//     user: {}
+//   },
+//   action: {
+//     home: {},
+//     user: {}
+//   },
+//   reducer: {
+//     home: fn,
+//     user: fn
+//   }
+// }
 
 const reducers = combineReducers({
   ...modules.reducer

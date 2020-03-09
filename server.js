@@ -41,7 +41,7 @@ app.prepare().then(() => {
   server.use(async (ctx, next) => {//ctx request 
     ctx.req.session = ctx.session;
     await handler(ctx.req, ctx.res)
-    ctx.respond = false;
+    // ctx.respond = false;
   })
 
   server.listen(port, () => {
