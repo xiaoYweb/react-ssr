@@ -1,16 +1,16 @@
 const { $request } = require('../api/http');
 
-function handleProxy() {
+function handleProxy(router) {
   return async(ctx, next) => {
     const url = ctx.url;
     const method = ctx.method.toLowerCase();
-    if (/^\/self/.test(url)) {
-      ctx.session.ln = ctx.request.body.ln
-      console.log("TCL: handleProxy -> ctx.request.body", ctx.request.body)
-      ctx.status = 200;
-      ctx.body = 'set ln success';
-      return
-    }
+    // if (/^\/self/.test(url)) {
+    //   ctx.session.ln = ctx.request.body.ln
+    //   console.log("TCL: handleProxy -> ctx.request.body", ctx.request.body)
+    //   ctx.status = 200;
+    //   ctx.body = 'set ln success';
+    //   return
+    // }
     const allowApiArr = ['api'];
     // const re = /^\/api/;
     const isAllowApi = allowApiArr.some(api => new RegExp('^\/' + api).test(url))

@@ -42,6 +42,7 @@ class Home extends React.Component {
         </ul> */}
         <Input type="text" value={ln} onChange={this.handleInput} />
         <Button onClick={this.setLanguage}>set language</Button>
+        <Button onClick={this.setName}>set name</Button>
       </>
     )
   }
@@ -63,6 +64,10 @@ class Home extends React.Component {
   setLanguage = () => {
     const { ln } = this.state;
     ln && this.props.setLn(ln)
+  }
+  setName = () => {
+    const { ln: name } = this.state;
+    name && this.props.setName(name)
   }
 }
 

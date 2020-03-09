@@ -11,6 +11,7 @@ const handler = app.getRequestHandler()
 
 const sessionMiddleware = require('./server/session');
 const httpProxy = require('./server/proxy');
+const handleSelfApi = require('./server/self');
 
 app.prepare().then(() => {
   const server = new Koa()
@@ -19,6 +20,7 @@ app.prepare().then(() => {
   server.use(koaBody())
   server.use(sessionMiddleware(server))
   server.use(httpProxy())
+  handleSelfApi(router)
   server.use(router.routes())
 
   server.use(async (ctx, next) => {
@@ -38,8 +40,8 @@ app.prepare().then(() => {
    *  originalUrl: '',
    * } 
    */
-  server.use(async (ctx, next) => {//ctx request 
-    ctx.req.session = ctx.session;
+  server.use(async (ctx, next) => {//ctx request next 接管
+    ctx.req.session = ctx.session;// session 数据同步至 next 的 ctx.req
     await handler(ctx.req, ctx.res)
     // ctx.respond = false;
   })
