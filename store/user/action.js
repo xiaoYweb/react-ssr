@@ -10,11 +10,12 @@ export default {
     return (dispatch, getState) => {
       return setLanguage({ln}).then(() => {
         dispatch(retParams(set_ln, ln))
+      }).catch(err => {
+        console.log("setLn -> err", err)
       })
     }
   },
   setName(name) {
-    console.log("setName -> dispatch")
     return dispatch => {
       return setName({name}).then(() => {
         dispatch(retParams(set_name, name))
